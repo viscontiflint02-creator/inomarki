@@ -1,0 +1,932 @@
+{
+  "almera": {
+    "image": "assets/replacement-generated/almera.png",
+    "width": 1536,
+    "height": 1024,
+    "views": {
+      "side": [
+        12,
+        103,
+        879,
+        331
+      ],
+      "front": [
+        995,
+        63,
+        462,
+        396
+      ],
+      "rear": [
+        128,
+        522,
+        451,
+        397
+      ],
+      "top": [
+        729,
+        564,
+        759,
+        345
+      ]
+    }
+  },
+  "almeraclassic": {
+    "image": "assets/replacement-generated/almeraclassic.png",
+    "width": 1536,
+    "height": 1024,
+    "views": {
+      "side": [
+        15,
+        95,
+        870,
+        299
+      ],
+      "front": [
+        988,
+        74,
+        449,
+        343
+      ],
+      "rear": [
+        122,
+        549,
+        460,
+        362
+      ],
+      "top": [
+        719,
+        559,
+        764,
+        321
+      ]
+    }
+  },
+  "camry50": {
+    "image": "assets/replacement-generated/camry50.png",
+    "width": 1536,
+    "height": 1024,
+    "views": {
+      "side": [
+        10,
+        119,
+        839,
+        268
+      ],
+      "front": [
+        972,
+        89,
+        446,
+        334
+      ],
+      "rear": [
+        145,
+        534,
+        479,
+        372
+      ],
+      "top": [
+        753,
+        566,
+        753,
+        327
+      ]
+    }
+  },
+  "camry55": {
+    "image": "assets/replacement-generated/camry55.png",
+    "width": 1536,
+    "height": 1024,
+    "views": {
+      "side": [
+        7,
+        108,
+        886,
+        284
+      ],
+      "front": [
+        984,
+        68,
+        481,
+        347
+      ],
+      "rear": [
+        118,
+        540,
+        527,
+        383
+      ],
+      "top": [
+        765,
+        562,
+        737,
+        328
+      ]
+    }
+  },
+  "camry70": {
+    "image": "assets/replacement-generated/camry70.png",
+    "width": 1536,
+    "height": 1024,
+    "views": {
+      "side": [
+        10,
+        115,
+        901,
+        277
+      ],
+      "front": [
+        1013,
+        97,
+        444,
+        310
+      ],
+      "rear": [
+        149,
+        561,
+        458,
+        322
+      ],
+      "top": [
+        734,
+        566,
+        763,
+        332
+      ]
+    }
+  },
+  "cerato3": {
+    "image": "assets/replacement-generated/cerato3.png",
+    "width": 1536,
+    "height": 1024,
+    "views": {
+      "side": [
+        14,
+        114,
+        884,
+        291
+      ],
+      "front": [
+        975,
+        87,
+        504,
+        348
+      ],
+      "rear": [
+        119,
+        529,
+        496,
+        358
+      ],
+      "top": [
+        764,
+        544,
+        726,
+        345
+      ]
+    }
+  },
+  "cerato4": {
+    "image": "assets/replacement-generated/cerato4.png",
+    "width": 1536,
+    "height": 1024,
+    "views": {
+      "side": [
+        32,
+        105,
+        877,
+        288
+      ],
+      "front": [
+        1029,
+        83,
+        438,
+        328
+      ],
+      "rear": [
+        105,
+        549,
+        472,
+        353
+      ],
+      "top": [
+        720,
+        564,
+        763,
+        315
+      ]
+    }
+  },
+  "duster2": {
+    "image": "assets/replacement-generated/duster2.png",
+    "width": 1536,
+    "height": 1024,
+    "views": {
+      "side": [
+        31,
+        43,
+        826,
+        372
+      ],
+      "front": [
+        1015,
+        41,
+        403,
+        391
+      ],
+      "rear": [
+        144,
+        484,
+        443,
+        424
+      ],
+      "top": [
+        726,
+        555,
+        758,
+        345
+      ]
+    }
+  },
+  "dusterpost": {
+    "image": "assets/replacement-generated/dusterpost.png",
+    "width": 1536,
+    "height": 1024,
+    "views": {
+      "side": [
+        15,
+        36,
+        866,
+        401
+      ],
+      "front": [
+        998,
+        24,
+        424,
+        430
+      ],
+      "rear": [
+        156,
+        499,
+        462,
+        440
+      ],
+      "top": [
+        751,
+        568,
+        745,
+        337
+      ]
+    }
+  },
+  "dusterpre": {
+    "image": "assets/replacement-generated/dusterpre.png",
+    "width": 1536,
+    "height": 1024,
+    "views": {
+      "side": [
+        25,
+        60,
+        811,
+        372
+      ],
+      "front": [
+        1010,
+        37,
+        425,
+        413
+      ],
+      "rear": [
+        138,
+        514,
+        485,
+        425
+      ],
+      "top": [
+        763,
+        554,
+        740,
+        345
+      ]
+    }
+  },
+  "elantra": {
+    "image": "assets/replacement-generated/elantra.png",
+    "width": 1536,
+    "height": 1024,
+    "views": {
+      "side": [
+        14,
+        119,
+        879,
+        273
+      ],
+      "front": [
+        983,
+        96,
+        444,
+        317
+      ],
+      "rear": [
+        142,
+        550,
+        476,
+        344
+      ],
+      "top": [
+        776,
+        561,
+        713,
+        322
+      ]
+    }
+  },
+  "h5": {
+    "image": "assets/replacement-generated/h5.png",
+    "width": 1536,
+    "height": 1024,
+    "views": {
+      "side": [
+        22,
+        94,
+        885,
+        324
+      ],
+      "front": [
+        1019,
+        82,
+        398,
+        346
+      ],
+      "rear": [
+        184,
+        514,
+        424,
+        391
+      ],
+      "top": [
+        744,
+        561,
+        744,
+        313
+      ]
+    }
+  },
+  "h7": {
+    "image": "assets/replacement-generated/h7.png",
+    "width": 1536,
+    "height": 1024,
+    "views": {
+      "side": [
+        39,
+        83,
+        854,
+        338
+      ],
+      "front": [
+        972,
+        75,
+        417,
+        357
+      ],
+      "rear": [
+        175,
+        540,
+        423,
+        373
+      ],
+      "top": [
+        760,
+        546,
+        726,
+        341
+      ]
+    }
+  },
+  "k5": {
+    "image": "assets/replacement-generated/k5.png",
+    "width": 1536,
+    "height": 1024,
+    "views": {
+      "side": [
+        22,
+        126,
+        903,
+        279
+      ],
+      "front": [
+        1032,
+        115,
+        438,
+        312
+      ],
+      "rear": [
+        153,
+        527,
+        477,
+        353
+      ],
+      "top": [
+        765,
+        545,
+        723,
+        344
+      ]
+    }
+  },
+  "lc300": {
+    "image": "assets/replacement-generated/lc300.png",
+    "width": 1536,
+    "height": 1024,
+    "views": {
+      "side": [
+        35,
+        63,
+        884,
+        346
+      ],
+      "front": [
+        1001,
+        64,
+        430,
+        364
+      ],
+      "rear": [
+        128,
+        511,
+        460,
+        420
+      ],
+      "top": [
+        691,
+        543,
+        796,
+        343
+      ]
+    }
+  },
+  "lx570": {
+    "image": "assets/replacement-generated/lx570.png",
+    "width": 1536,
+    "height": 1024,
+    "views": {
+      "side": [
+        26,
+        70,
+        861,
+        338
+      ],
+      "front": [
+        1013,
+        66,
+        407,
+        358
+      ],
+      "rear": [
+        134,
+        518,
+        443,
+        419
+      ],
+      "top": [
+        716,
+        543,
+        766,
+        346
+      ]
+    }
+  },
+  "prado150late": {
+    "image": "assets/replacement-generated/prado150late.png",
+    "width": 1536,
+    "height": 1024,
+    "views": {
+      "side": [
+        25,
+        90,
+        768,
+        318
+      ],
+      "front": [
+        987,
+        79,
+        390,
+        348
+      ],
+      "rear": [
+        180,
+        538,
+        407,
+        384
+      ],
+      "top": [
+        741,
+        553,
+        762,
+        342
+      ]
+    }
+  },
+  "prado150mid": {
+    "image": "assets/replacement-generated/prado150mid.png",
+    "width": 1536,
+    "height": 1024,
+    "views": {
+      "side": [
+        25,
+        80,
+        882,
+        362
+      ],
+      "front": [
+        1016,
+        76,
+        416,
+        386
+      ],
+      "rear": [
+        113,
+        522,
+        443,
+        420
+      ],
+      "top": [
+        660,
+        548,
+        811,
+        364
+      ]
+    }
+  },
+  "prado150pre": {
+    "image": "assets/replacement-generated/prado150pre.png",
+    "width": 1536,
+    "height": 1024,
+    "views": {
+      "side": [
+        27,
+        64,
+        828,
+        341
+      ],
+      "front": [
+        1000,
+        56,
+        433,
+        389
+      ],
+      "rear": [
+        158,
+        509,
+        409,
+        386
+      ],
+      "top": [
+        703,
+        567,
+        787,
+        340
+      ]
+    }
+  },
+  "prado250": {
+    "image": "assets/replacement-generated/prado250.png",
+    "width": 1536,
+    "height": 1024,
+    "views": {
+      "side": [
+        22,
+        68,
+        887,
+        367
+      ],
+      "front": [
+        998,
+        66,
+        461,
+        393
+      ],
+      "rear": [
+        124,
+        513,
+        451,
+        421
+      ],
+      "top": [
+        693,
+        550,
+        792,
+        364
+      ]
+    }
+  },
+  "q6": {
+    "image": "assets/replacement-generated/q6.png",
+    "width": 1536,
+    "height": 1024,
+    "views": {
+      "side": [
+        26,
+        83,
+        866,
+        316
+      ],
+      "front": [
+        1003,
+        80,
+        443,
+        359
+      ],
+      "rear": [
+        137,
+        526,
+        470,
+        396
+      ],
+      "top": [
+        746,
+        567,
+        742,
+        325
+      ]
+    }
+  },
+  "range": {
+    "image": "assets/replacement-generated/range.png",
+    "width": 1536,
+    "height": 1024,
+    "views": {
+      "side": [
+        25,
+        78,
+        842,
+        333
+      ],
+      "front": [
+        988,
+        68,
+        446,
+        371
+      ],
+      "rear": [
+        137,
+        504,
+        480,
+        406
+      ],
+      "top": [
+        740,
+        553,
+        747,
+        331
+      ]
+    }
+  },
+  "rav4old": {
+    "image": "assets/replacement-generated/rav4old.png",
+    "width": 1536,
+    "height": 1024,
+    "views": {
+      "side": [
+        20,
+        88,
+        824,
+        314
+      ],
+      "front": [
+        1015,
+        83,
+        402,
+        327
+      ],
+      "rear": [
+        161,
+        518,
+        451,
+        396
+      ],
+      "top": [
+        770,
+        553,
+        717,
+        326
+      ]
+    }
+  },
+  "sonata": {
+    "image": "assets/replacement-generated/sonata.png",
+    "width": 1536,
+    "height": 1024,
+    "views": {
+      "side": [
+        16,
+        117,
+        869,
+        275
+      ],
+      "front": [
+        995,
+        94,
+        447,
+        331
+      ],
+      "rear": [
+        133,
+        536,
+        499,
+        364
+      ],
+      "top": [
+        763,
+        553,
+        740,
+        336
+      ]
+    }
+  },
+  "sorento": {
+    "image": "assets/replacement-generated/sorento.png",
+    "width": 1536,
+    "height": 1024,
+    "views": {
+      "side": [
+        30,
+        94,
+        847,
+        318
+      ],
+      "front": [
+        973,
+        81,
+        427,
+        358
+      ],
+      "rear": [
+        139,
+        513,
+        455,
+        395
+      ],
+      "top": [
+        715,
+        536,
+        776,
+        359
+      ]
+    }
+  },
+  "sorentoprime": {
+    "image": "assets/replacement-generated/sorentoprime.png",
+    "width": 1536,
+    "height": 1024,
+    "views": {
+      "side": [
+        25,
+        69,
+        874,
+        327
+      ],
+      "front": [
+        996,
+        60,
+        452,
+        368
+      ],
+      "rear": [
+        103,
+        487,
+        501,
+        424
+      ],
+      "top": [
+        715,
+        533,
+        777,
+        351
+      ]
+    }
+  },
+  "sportage": {
+    "image": "assets/replacement-generated/sportage.png",
+    "width": 1536,
+    "height": 1024,
+    "views": {
+      "side": [
+        21,
+        86,
+        877,
+        329
+      ],
+      "front": [
+        1012,
+        76,
+        419,
+        354
+      ],
+      "rear": [
+        137,
+        517,
+        470,
+        396
+      ],
+      "top": [
+        741,
+        550,
+        753,
+        337
+      ]
+    }
+  },
+  "t300": {
+    "image": "assets/replacement-generated/t300.png",
+    "width": 1536,
+    "height": 1024,
+    "views": {
+      "side": [
+        33,
+        102,
+        800,
+        328
+      ],
+      "front": [
+        984,
+        84,
+        394,
+        365
+      ],
+      "rear": [
+        179,
+        534,
+        411,
+        401
+      ],
+      "top": [
+        769,
+        582,
+        720,
+        308
+      ]
+    }
+  },
+  "t400": {
+    "image": "assets/replacement-generated/t400.png",
+    "width": 1536,
+    "height": 1024,
+    "views": {
+      "side": [
+        35,
+        90,
+        845,
+        343
+      ],
+      "front": [
+        1000,
+        75,
+        408,
+        364
+      ],
+      "rear": [
+        141,
+        518,
+        421,
+        404
+      ],
+      "top": [
+        694,
+        547,
+        799,
+        342
+      ]
+    }
+  },
+  "tiguanl": {
+    "image": "assets/replacement-generated/tiguanl.png",
+    "width": 1536,
+    "height": 1024,
+    "views": {
+      "side": [
+        32,
+        82,
+        861,
+        323
+      ],
+      "front": [
+        1008,
+        79,
+        417,
+        343
+      ],
+      "rear": [
+        155,
+        525,
+        452,
+        394
+      ],
+      "top": [
+        769,
+        547,
+        721,
+        339
+      ]
+    }
+  }
+}
