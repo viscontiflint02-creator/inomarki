@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#050505">
 <meta name="description" content="Таттелеком: национальный режим, автопарк, бюджеты и схемы закупки автомобилей.">
-<title>Национальный режим · Таттелеком</title>
+<title>Закупка автомобилей для ТМТ · Таттелеком</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap">
@@ -168,15 +168,15 @@ a{text-decoration:none}
 .headline span{display:block}
 .headline em{font-style:normal;color:var(--c1)}
 .sub{
-  position:absolute;left:calc(75.5 * var(--u));top:calc(230.5 * var(--u) + 189 * var(--h));margin:0;
+  position:absolute;left:calc(75.5 * var(--u));top:calc(230.5 * var(--u) + 269.5 * var(--h));margin:0;
   font-size:calc(20.7 * var(--h));line-height:calc(24.5 * var(--h));font-weight:500;
   word-spacing:calc(1.8 * var(--h));color:var(--muted);
 }
 .sub span{display:block;white-space:nowrap}
-.pill-cta{position:absolute;left:calc(74.9 * var(--u));top:calc(230.5 * var(--u) + 264.5 * var(--h));
+.pill-cta{position:absolute;left:calc(74.9 * var(--u));top:calc(230.5 * var(--u) + 345 * var(--h));
   width:calc(182 * var(--h));height:calc(50 * var(--h));font-size:calc(20.6 * var(--h))}
 .ghost{position:absolute;font-family:var(--f-display);left:calc(74.9 * var(--u) + 226 * var(--h));
-  top:calc(230.5 * var(--u) + 279.5 * var(--h));
+  top:calc(230.5 * var(--u) + 360 * var(--h));
   font-size:calc(20.6 * var(--h));font-weight:600;letter-spacing:calc(.12 * var(--h));color:#fff;
   transition:color .22s ease}
 .ghost:hover{color:var(--c1)}
@@ -1805,8 +1805,9 @@ a{text-decoration:none}
   </nav>
 
   <main class="hero" id="hero">
-    <h1 class="headline"><span>Национальный</span>
-      <span>режим закупок</span></h1>
+    <h1 class="headline"><span>Закупка</span>
+      <span>автомобилей</span>
+      <span>для ТМТ</span></h1>
     <p class="sub">
       <span>Единый расчёт по 223-ФЗ и ПП № 1875: статус заказчика,</span>
       <span>баллы локализации и минимальная годовая доля.</span>
@@ -3883,7 +3884,7 @@ function go(i) {
   $('#prev').disabled = i === 0;
   $('#next').disabled = i === TOTAL - 1;
   /* Номер слайда хранится в cur, чтобы скопированная ссылка открывала титул. */
-  document.title = (i === 0 ? 'Национальный режим' : NM[i]) + ' · Таттелеком';
+  document.title = (i === 0 ? 'Закупка автомобилей для ТМТ' : NM[i]) + ' · Таттелеком';
   if (K.portrait()) window.scrollTo(0, 0);
 }
 window.go = go;
