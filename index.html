@@ -1420,10 +1420,10 @@ a{text-decoration:none}
 
 
 /* Компактный калькулятор: две панели, пять строк, без внутренней прокрутки. */
-#s8 .s-title{max-width:none;right:calc(75 * var(--u));font-size:calc(40 * var(--h));line-height:1.2}
-#s8 .s-note{left:calc(75 * var(--u));right:calc(75 * var(--u));top:calc(233 * var(--u));width:auto;text-align:left;font-size:calc(14 * var(--h));line-height:1.5}
-#s8 .s-rule{top:calc(276 * var(--u))}
-#s8 .s-body{top:calc(297 * var(--u))}
+#s9 .s-title{max-width:none;right:calc(75 * var(--u));font-size:calc(40 * var(--h));line-height:1.2}
+#s9 .s-note{left:calc(75 * var(--u));right:calc(75 * var(--u));top:calc(233 * var(--u));width:auto;text-align:left;font-size:calc(14 * var(--h));line-height:1.5}
+#s9 .s-rule{top:calc(276 * var(--u))}
+#s9 .s-body{top:calc(297 * var(--u))}
 .calc-layout{grid-template-columns:minmax(0,1.08fr) minmax(0,1fr);gap:calc(16 * var(--u));overflow:visible;align-content:start;align-items:stretch;padding:0;flex:0 0 auto}
 .calc-layout>.col{min-height:0;padding:calc(20 * var(--u));border:1px solid var(--hair);background:rgba(8,9,12,.68)}
 .calc-layout .viewbar{min-height:0;margin:0 0 calc(12 * var(--u));gap:calc(10 * var(--u));padding-bottom:calc(12 * var(--u));border-bottom:1px solid var(--hair)}
@@ -1469,7 +1469,7 @@ a{text-decoration:none}
 .quota-badge{display:inline-block;margin-left:10px;padding:3px 7px;border:1px solid rgba(111,174,127,.5);border-radius:4px;color:#9ad5a8;font-size:10px;line-height:1.2;vertical-align:middle;white-space:nowrap}
 .quota-legend{display:block;color:#9ad5a8;margin-bottom:6px}
 @media(max-aspect-ratio:11/10){
-  #s8 .s-title,#s8 .s-note,#s8 .s-body{position:static}
+  #s9 .s-title,#s9 .s-note,#s9 .s-body{position:static}
   .calc-layout{grid-template-columns:minmax(0,1fr)}
   .calc-layout .crow{grid-template-columns:minmax(0,1fr) calc(150 * var(--u)) calc(106 * var(--u))}
   .calc-layout .crow__s{display:none}
@@ -1705,7 +1705,7 @@ a{text-decoration:none}
 </style>
 <style id="replacement-technical-styles">
 .replacement-app{--old:#e5ac3a;--new:#79c4d0;gap:12px!important;font-size:16px!important}
-@media(min-width:901px){#s7 .s-eyebrow{top:calc(104 * var(--u))}#s7 .s-title{top:calc(130 * var(--u));font-size:calc(40 * var(--h));line-height:1.08}#s7 .s-note{top:calc(130 * var(--u));font-size:calc(14 * var(--h));line-height:1.4}#s7 .s-rule{top:calc(204 * var(--u))}#s7 .s-body{top:calc(225 * var(--u));bottom:calc(100 * var(--u))}}
+@media(min-width:901px){#s8 .s-eyebrow{top:calc(104 * var(--u))}#s8 .s-title{top:calc(130 * var(--u));max-width:none;white-space:nowrap;font-size:calc(40 * var(--h));line-height:1.08}#s8 .s-note{top:calc(112 * var(--u));font-size:calc(14 * var(--h));line-height:1.4}#s8 .s-rule{top:calc(204 * var(--u))}#s8 .s-body{top:calc(225 * var(--u));bottom:calc(100 * var(--u))}}
 .replace-topbar{display:flex;align-items:center;gap:16px;flex:none;font-size:12px;color:#a6aaa5}
 .replace-topbar select{max-width:240px}.replace-topbar button{margin-left:auto}
 .replace-selectors{display:grid;grid-template-columns:1fr 1fr;gap:22px;flex:none}
@@ -1775,13 +1775,13 @@ a{text-decoration:none}
 
     <nav class="links" aria-label="Разделы">
       <a href="#2" data-go="1">Закупка ТМТ</a>
-      <a href="#4" data-go="3" data-overview-view="expenses">Автопарк</a>
-      <a href="#5" data-go="4">Бюджет</a>
-      <a href="#9" data-go="8">Расчёт</a>
-      <a href="#10" data-go="9">ТЗ и заявки</a>
+      <a href="#5" data-go="4" data-overview-view="expenses">Автопарк</a>
+      <a href="#6" data-go="5">Бюджет</a>
+      <a href="#10" data-go="9">Расчёт</a>
+      <a href="#11" data-go="10">ТЗ и заявки</a>
     </nav>
 
-    <a class="pill pill-nav" href="#9" data-go="8"><span>К расчёту</span></a>
+    <a class="pill pill-nav" href="#10" data-go="9"><span>К расчёту</span></a>
 
     <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Открыть меню">
       <i></i><i></i>
@@ -1793,13 +1793,13 @@ a{text-decoration:none}
       <p class="menu-eyebrow">Разделы</p>
       <ul class="menu-list">
         <li><button type="button" data-go="1">Закупка ТМТ</button></li>
-        <li><button type="button" data-go="3" data-overview-view="expenses">Автопарк</button></li>
-        <li><button type="button" data-go="4">Бюджет</button></li>
-        <li><button type="button" data-go="8">Расчёт</button></li>
-        <li><button type="button" data-go="9">ТЗ и заявки</button></li>
+        <li><button type="button" data-go="4" data-overview-view="expenses">Автопарк</button></li>
+        <li><button type="button" data-go="5">Бюджет</button></li>
+        <li><button type="button" data-go="9">Расчёт</button></li>
+        <li><button type="button" data-go="10">ТЗ и заявки</button></li>
       </ul>
       <div class="menu-foot">
-        <button class="pill" type="button" data-go="8"><span>Открыть расчёт</span></button>
+        <button class="pill" type="button" data-go="9"><span>Открыть расчёт</span></button>
       </div>
     </div>
   </nav>
@@ -1811,8 +1811,8 @@ a{text-decoration:none}
       <span>Единый расчёт по 223-ФЗ и ПП № 1875: статус заказчика,</span>
       <span>баллы локализации и минимальная годовая доля.</span>
     </p>
-    <a class="pill pill-cta" href="#9" data-go="8"><span>Открыть расчёт</span></a>
-    <a class="ghost" href="#4" data-go="3" data-overview-view="expenses">Смотреть автопарк</a>
+    <a class="pill pill-cta" href="#10" data-go="9"><span>Открыть расчёт</span></a>
+    <a class="ghost" href="#5" data-go="4" data-overview-view="expenses">Смотреть автопарк</a>
   </main>
 
   <div class="deck" id="deck"></div>
@@ -3319,7 +3319,7 @@ function openDimensions(){
   var slider=$('#dimension-opacity',root);slider.oninput=function(){dimensionState.opacity=+this.value;var layers=$$('.dimension-photo-layer',root);if(layers[1])layers[1].setAttribute('opacity',dimensionState.opacity/100);};
 }
 
-var S8={name:'Сравнение авто',title:'Сравните машины<br>до решения о закупке',note:'7 моделей из предложений · выбор комплектации. Зелёный — преимущество, красный — уступает; габариты и конструкция сравниваются без оценки.',body:function(){
+var S8={name:'Сравнение авто',title:'Сравните машины до решения о закупке',note:'7 моделей из предложений · выбор комплектации. Зелёный — преимущество, красный — уступает; габариты и конструкция сравниваются без оценки.',body:function(){
   var a=cmpCar('a'),b=cmpCar('b');
   return '<div class="compare-app"><div class="compare-selectors">'+cmpSelector('a')+'<button type="button" id="compare-swap" aria-label="Поменять автомобили местами">⇄</button>'+cmpSelector('b')+'</div><div class="compare-main"><section class="compare-visual"><div class="compare-tabs"><button data-cmp-view="photo" class="'+(cmp.view==='photo'?'on':'')+'" type="button">Форма и фотографии</button><button data-cmp-view="overlay" class="'+(cmp.view==='overlay'?'on':'')+'" type="button">Наложение габаритов</button></div><div id="compare-visual-body">'+cmpVisual(a,b)+'</div></section><section class="compare-specs"><div class="compare-filters"><select aria-label="Раздел характеристик" id="compare-group"><option value="">Техника и оснащение</option><option value="all" '+(cmp.group==='all'?'selected':'')+'>Все сведения</option>'+Array.from(new Set(COMPARE_FIELDS.map(function(f){return f.group;}))).sort(function(a,b){return (a==='Предложение'?1:0)-(b==='Предложение'?1:0);}).map(function(g){return '<option '+(cmp.group===g?'selected':'')+'>'+esc(g)+'</option>';}).join('')+'</select><input type="search" id="compare-search" aria-label="Поиск характеристики" placeholder="Найти параметр…" value="'+esc(cmp.query)+'"/><label><input type="checkbox" id="compare-diff" '+(cmp.diff?'checked':'')+'/> Только различия</label></div><div id="compare-table-host" role="region" aria-label="Технические характеристики — прокручиваемый список" tabindex="0">'+cmpTable()+'</div><div class="compare-legend"><span class="compare-good">＋ Выигрывает</span><span class="compare-bad">− Уступает</span><span>— Нет данных в источниках</span></div><p class="compare-caption">Цвет — оценка отдельного параметра, не автомобиля целиком. Больше мощности, клиренса и вместимости; меньше цены и времени разгона. Расход — только по одной методике.</p></section></div></div>';
 },mount:function(r,redraw){
@@ -3610,7 +3610,7 @@ var STender = {
           '<strong class="tmt-lot-sum">' + tmtMoney(lot.price) + '</strong></button></li>';
       }).join('') + '</ul>' +
       '<div class="tmt-foot"><p class="foot-note">Поставка в Казань, ул. Космонавтов, д. 65, корп. 2.</p>' +
-      '<button class="chipbtn" type="button" data-go="9">Сравнить заявки →</button></div>' +
+      '<button class="chipbtn" type="button" data-go="10">Сравнить заявки →</button></div>' +
       '<div class="tmt-doc-tools">' +
       '<button class="chipbtn" id="tmtNoticeZoom" type="button" aria-haspopup="dialog">Увеличить страницу ↗</button>' +
       tmtNoticeDownload() + '</div></aside></div></div>';
@@ -3634,7 +3634,7 @@ function tmtVehicleDetails(lot) {
     '<div><span>Количество</span><b>' + lot.qty + ' шт.</b></div>' +
     '<div><span>За единицу без НДС</span><b>' + tmtMoney(lot.unit) + '</b></div>' +
     '<div><span>Начальная цена лота</span><b>' + tmtMoney(lot.price) + '</b></div></div>' +
-    '<button class="chipbtn" type="button" data-go="9" data-tmt-lot="' + lot.id + '">ТЗ и заявки по лоту →</button>';
+    '<button class="chipbtn" type="button" data-go="10" data-tmt-lot="' + lot.id + '">ТЗ и заявки по лоту →</button>';
 }
 
 function tmtVehiclePhoto(lot) {
@@ -3756,7 +3756,7 @@ var SReview = {
 };
 KX.selectTenderLot = function (id) { tmtLotId = id; };
 
-window.SLIDES = [null, STender, SShowcase, KX.SOverview, KX.S4, KX.S5, KX.S7, S8, S10, SReview];
+window.SLIDES = [null, STender, SShowcase, KX.S1, KX.SOverview, KX.S4, KX.S5, KX.S7, S8, S10, SReview];
 window.SNAMES = window.SLIDES.map(function (slide) { return slide ? slide.name : 'Титул'; });
 })();
 
