@@ -1617,6 +1617,7 @@ a{text-decoration:none}
 .history-details .tbl td.num{white-space:nowrap}
 .history-layout{display:grid;grid-template-columns:minmax(0,1fr) calc(440 * var(--u));gap:calc(16 * var(--u));align-items:stretch}
 .history-layout>*{min-width:0}
+.history-details .tbl th button{cursor:pointer;white-space:nowrap}
 .history-caption{margin:0}
 .history-caption-row{display:flex;align-items:flex-end;justify-content:space-between;gap:calc(16 * var(--u));margin-top:calc(10 * var(--u));min-height:calc(30 * var(--u))}
 .history-tools{display:flex;align-items:flex-end;gap:calc(14 * var(--u))}
@@ -2970,70 +2971,122 @@ function historySheet(year, key, title) {
       : 'Строки и суммы приведены по бюджетному листу выбранного года.') + '</div></div>');
 }
 
-function purchaseTable(head, widths, rows) {
-  return '<div class="reg-scroll"><table class="tbl"><colgroup>' + widths.map(function (width) {
-    return '<col style="width:' + width + '%">';
-  }).join('') + '</colgroup><thead><tr>' + head.map(function (cell, i) {
-    return '<th' + (i >= head.length - 2 && cell.num ? ' class="num"' : cell.num ? ' class="num"' : '') + '>' + cell.t + '</th>';
-  }).join('') + '</tr></thead><tbody>' + rows.map(function (row) {
-    return '<tr>' + row.map(function (value, i) {
-      var cls = i === 0 ? ' class="name"' : head[i].num ? ' class="num' + (i === row.length - 1 ? ' strong' : '') + '"' : '';
-      return '<td' + cls + '>' + (value === '' || value === null || value === undefined ? '—' : esc(String(value))) + '</td>';
-    }).join('') + '</tr>';
-  }).join('') + '</tbody></table></div>';
+/* Таблица списка с сортировкой по клику на заголовок: текст А→Я / Я→А, числа ↑ / ↓. Пустые значения всегда внизу. */
+function purchaseTable(id, head, widths, rows, sort) {
+  var state = { col: sort[0], dir: sort[1] };
+  function value(row, i) { var v = row[i]; return v === '' || v === null || v === undefined ? null : v; }
+  function sorted() {
+    var i = state.col, num = head[i].num;
+    return rows.slice().sort(function (a, b) {
+      var x = value(a, i), y = value(b, i);
+      if (x === null || y === null) return x === y ? 0 : x === null ? 1 : -1;
+      return state.dir * (num ? x - y : String(x).localeCompare(String(y), 'ru', { numeric: true, sensitivity: 'base' }));
+    });
+  }
+  function mark(i) {
+    if (state.col !== i) return '';
+    return head[i].num ? (state.dir === 1 ? ' ↑' : ' ↓') : (state.dir === 1 ? ' А→Я' : ' Я→А');
+  }
+  function headHtml() {
+    return head.map(function (cell, i) {
+      var on = state.col === i;
+      return '<th class="' + (cell.num ? 'num' : '') + (on ? ' on' : '') + '"' +
+        (on ? ' aria-sort="' + (state.dir === 1 ? 'ascending' : 'descending') + '"' : '') +
+        '><button type="button" data-col="' + i + '" title="Сортировать">' + cell.t + mark(i) + '</button></th>';
+    }).join('');
+  }
+  function bodyHtml() {
+    return sorted().map(function (row) {
+      return '<tr>' + row.map(function (raw, i) {
+        var v = value(row, i), cell = head[i];
+        var cls = i === 0 ? ' class="name"' : cell.num ? ' class="num' + (i === row.length - 1 ? ' strong' : '') + '"' : '';
+        return '<td' + cls + '>' + (v === null ? '—' : esc(String(cell.fmt ? cell.fmt(v) : v))) + '</td>';
+      }).join('') + '</tr>';
+    }).join('');
+  }
+  function bind() {
+    var box = document.getElementById(id);
+    if (!box) return;
+    $$('th button', box).forEach(function (button) {
+      button.addEventListener('click', function () {
+        var i = +button.dataset.col;
+        state.dir = state.col === i ? -state.dir : (head[i].num ? -1 : 1);
+        state.col = i;
+        box.querySelector('thead tr').innerHTML = headHtml();
+        box.querySelector('tbody').innerHTML = bodyHtml();
+        bind();
+        box.querySelector('th button[data-col="' + i + '"]').focus();
+      });
+    });
+  }
+  return {
+    html: '<div class="reg-scroll" id="' + id + '"><table class="tbl"><colgroup>' + widths.map(function (width) {
+      return '<col style="width:' + width + '%">';
+    }).join('') + '</colgroup><thead><tr>' + headHtml() + '</tr></thead><tbody>' + bodyHtml() + '</tbody></table></div>',
+    bind: bind
+  };
 }
 
+function money2(v) { return n(v, 2); }
+function count0(v) { return n(v); }
+
 function cardsSheet(title, cars) {
-  var list = cars.slice().sort(function (a, b) { return b.price - a.price; });
+  var table = purchaseTable('historyCardsTable',
+    [{ t: 'Полное наименование' }, { t: 'Год покупки', num: true }, { t: 'ЗУЭС' }, { t: 'Год выпуска', num: true }, { t: 'Стоимость, ₽', num: true, fmt: money2 }],
+    [44, 11, 20, 11, 14], cars.map(function (car) { return [car.name, car.year, car.unit, car.build, car.price]; }), [4, -1]);
   K.openSheet('«Выгрузка купленные 2020-2026» · без НДС', title,
-    '<div class="reg history-details"><div class="fbar"><span class="fbar__count">' + list.length + ' карточек · ' +
-    mln(sum(list, 'price')) + ' млн ₽ · средняя ' + (list.length ? mln(sum(list, 'price') / list.length) : '—') + ' млн ₽ на объект</span></div>' +
-    purchaseTable([{ t: 'Полное наименование' }, { t: 'Год покупки', num: true }, { t: 'ЗУЭС' }, { t: 'Год выпуска', num: true }, { t: 'Стоимость, ₽', num: true }],
-      [44, 11, 20, 11, 14], list.map(function (car) { return [car.name, car.year, car.unit, car.build, n(car.price, 2)]; })) +
-    '<div class="reg-foot">Фактические карточки из реестра приобретений. Стоимость без НДС.</div></div>');
+    '<div class="reg history-details"><div class="fbar"><span class="fbar__count">' + cars.length + ' карточек · ' +
+    mln(sum(cars, 'price')) + ' млн ₽ · средняя ' + (cars.length ? mln(sum(cars, 'price') / cars.length) : '—') + ' млн ₽ на объект</span></div>' +
+    table.html + '<div class="reg-foot">Фактические карточки из реестра приобретений. Стоимость без НДС. Нажмите на заголовок столбца, чтобы отсортировать.</div></div>');
+  table.bind();
 }
 
 function planSheet(row, family) {
+  var table = purchaseTable('historyPlanTable',
+    [{ t: 'Техника' }, { t: 'Подразделение' }, { t: 'Кол-во', num: true, fmt: count0 }, { t: 'Без НДС, ₽', num: true, fmt: money2 }],
+    [52, 26, 8, 14], row.plans.map(function (plan) { return [plan.name, plan.unit, plan.qty, plan.amount]; }), [3, -1]);
   K.openSheet('«авто 2021-2026.xlsx» · только техника · без НДС', row.year + ' · план · ' + familyName(family),
     '<div class="reg history-details"><div class="fbar"><span class="fbar__count">' + n(row.planQty || 0) + ' ед. · ' +
     mln(row.planned) + ' млн ₽ · средняя цена плана ' + (row.planPrice ? mln(row.planPrice) : '—') + ' млн ₽</span></div>' +
-    purchaseTable([{ t: 'Техника' }, { t: 'Подразделение' }, { t: 'Кол-во', num: true }, { t: 'Без НДС, ₽', num: true }],
-      [52, 26, 8, 14], row.plans.map(function (plan) { return [plan.name, plan.unit, n(plan.qty), n(plan.amount, 2)]; })) +
-    '<div class="reg-foot">' + (row.plans.length ? 'Строки исходного плана без дооснащения.' : 'Плана за этот год в источнике нет.') + '</div></div>');
+    table.html + '<div class="reg-foot">' + (row.plans.length ? 'Строки исходного плана без дооснащения.' : 'Плана за этот год в источнике нет.') + '</div></div>');
+  table.bind();
 }
 
 function boughtSheet(row, family) {
-  var lines = row.cars.map(function (car) { return [car.name, 'В реестре', car.unit, '1', n(car.price, 2)]; })
-    .concat(row.extra.map(function (item) { return [item.name, item.status + ' · ' + item.date, 'Нет карточки', n(item.qty), n(item.amount, 2)]; }))
-    .concat(row.tender.map(function (item) { return [item.name, 'В закупке ТМТ', 'Резерв', n(item.qty), n(item.amount, 2)]; }));
+  var lines = row.cars.map(function (car) { return [car.name, 'В реестре', car.unit, 1, car.price]; })
+    .concat(row.extra.map(function (item) { return [item.name, item.status + ' · ' + item.date, 'Нет карточки', item.qty, item.amount]; }))
+    .concat(row.tender.map(function (item) { return [item.name, 'В закупке ТМТ', 'Резерв', item.qty, item.amount]; }));
+  var table = purchaseTable('historyBoughtTable',
+    [{ t: 'Наименование' }, { t: 'Статус' }, { t: 'ЗУЭС' }, { t: 'Ед.', num: true, fmt: count0 }, { t: 'Без НДС, ₽', num: true, fmt: money2 }],
+    [42, 21, 17, 6, 14], lines, [4, -1]);
   K.openSheet('Реестр карточек и лист «факт 2026» · без НДС', row.year + ' · приобретено · ' + familyName(family),
     '<div class="reg history-details"><div class="fbar"><span class="fbar__count">' + row.cardQty + ' в реестре · ' +
     row.extraQty + ' по договорам без карточек · ' + row.tenderQty + ' в закупке ТМТ</span></div>' +
-    purchaseTable([{ t: 'Наименование' }, { t: 'Статус' }, { t: 'ЗУЭС' }, { t: 'Ед.', num: true }, { t: 'Без НДС, ₽', num: true }],
-      [42, 21, 17, 6, 14], lines) +
-    '<div class="reg-foot">Договоры и извещения — строки листа «факт 2026», ещё не попавшие в реестр на 30.09.2026. ' +
+    table.html + '<div class="reg-foot">Договоры и извещения — строки листа «факт 2026», ещё не попавшие в реестр на 30.09.2026. ' +
     'Резерв «Largus, Granta, соболь» 22 321 311,49 ₽ равен начальным ценам лотов 1–3 закупки ТМТ.</div></div>');
+  table.bind();
 }
 
 function familiesSheet() {
   var seen = {}, models = [];
   PURCHASE_HISTORY.cars.forEach(function (car) { if (!seen[car.model]) { seen[car.model] = true; models.push(car.model); } });
+  var years = [overview.base, overview.end];
   var rows = models.map(function (model) {
     var cars = PURCHASE_HISTORY.cars.filter(function (car) { return car.model === model; });
     var pair = historyPair(historyRows('price', model));
-    var average = sum(cars, 'price') / cars.length, median = medianPrice(cars);
-    return { model: model, qty: cars.length, average: average, median: median, base: pair[0].boughtPrice, end: pair[1].boughtPrice,
-      delta: changePct(pair[0].boughtPrice, pair[1].boughtPrice), years: [pair[0].year, pair[1].year] };
-  }).sort(function (a, b) { return b.average - a.average; });
-  var years = rows.length ? rows[0].years : [overview.base, overview.end];
-  function m(v) { return v === null || v === undefined ? '' : n(v / 1e6, 2); }
+    years = [pair[0].year, pair[1].year];
+    return [model, cars.length, sum(cars, 'price') / cars.length, medianPrice(cars), pair[0].boughtPrice, pair[1].boughtPrice,
+      changePct(pair[0].boughtPrice, pair[1].boughtPrice)];
+  });
+  function m(v) { return n(v / 1e6, 2); }
+  var table = purchaseTable('historyFamiliesTable',
+    [{ t: 'Семейство' }, { t: 'Машин', num: true, fmt: count0 }, { t: 'Средняя, млн ₽', num: true, fmt: m }, { t: 'Медиана, млн ₽', num: true, fmt: m },
+      { t: years[0] + ', млн ₽', num: true, fmt: m }, { t: years[1] + ', млн ₽', num: true, fmt: m }, { t: 'Изменение, %', num: true, fmt: changeText }],
+    [24, 9, 13, 13, 13, 13, 15], rows, [2, -1]);
   K.openSheet('2020–2026 · стоимость без НДС', 'Средняя стоимость всех семейств',
     '<div class="reg history-details"><div class="fbar"><span class="fbar__count">Каждое семейство рассчитано по собственным карточкам. Прочерк — покупок в году не было.</span></div>' +
-    purchaseTable([{ t: 'Семейство' }, { t: 'Машин', num: true }, { t: 'Средняя, млн ₽', num: true }, { t: 'Медиана, млн ₽', num: true },
-      { t: years[0] + ', млн ₽', num: true }, { t: years[1] + ', млн ₽', num: true }, { t: 'Изменение, %', num: true }],
-      [24, 9, 13, 13, 13, 13, 15], rows.map(function (row) {
-        return [row.model, row.qty, m(row.average), m(row.median), m(row.base), m(row.end), row.delta === null ? '' : changeText(row.delta)];
-      })) + '</div>');
+    table.html + '<div class="reg-foot">Нажмите на заголовок столбца, чтобы отсортировать.</div></div>');
+  table.bind();
 }
 
 var SOverview = {
